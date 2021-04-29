@@ -17,7 +17,7 @@
 
     $sql = "select * from tbl_information";
     $information = $con->query($sql) or die($con->error);
-    $row = $information->fetch_array();
+    // $row = $information->fetch_array();
 
 ?>
 <!DOCTYPE html>
@@ -42,14 +42,21 @@
             <th>Address</th>
         </tr>
     </thead>
+
     <tbody>
-    <?php while($row = $information->fetch_array()):?>
+        <?php if($information->num_rows >0){
+                while($row = $information->fetch_array()){
+        ?>  
             <tr>
                 <td><a href="details.php?ID=<?php echo $row['id'];?>">View</a></td>
                 <td><?php echo $row['name'];?></td>
                 <td><?php echo $row['address'];?></td>
             </tr>
-        <?php endwhile?>
+        <?php } }
+        else
+        {
+            echo "no Data table Display";
+        }?>
     </tbody>
 </table>
 </body>
