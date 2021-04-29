@@ -42,15 +42,14 @@
             <th>Address</th>
         </tr>
     </thead>
-
     <tbody>
-        <?php do{ ?> 
+    <?php while($row = $information->fetch_array()):?>
             <tr>
                 <td><a href="details.php?ID=<?php echo $row['id'];?>">View</a></td>
                 <td><?php echo $row['name'];?></td>
                 <td><?php echo $row['address'];?></td>
             </tr>
-        <?php }while($row = $information->fetch_array());?>
+        <?php endwhile?>
     </tbody>
 </table>
 </body>
